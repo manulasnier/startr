@@ -1,0 +1,124 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="SKYPE_TOOLBAR" content="SKYPE_TOOLBAR_PARSER_COMPATIBLE" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="robots" content="index,follow" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width" />
+
+        <link rel="stylesheet" href="assets/css/style.css" />
+
+        <!-- favicon 96x96 -->
+        <link rel="icon" type="image/png" href="assets/img/favicon.png" />
+
+        <!-- iOS icon -->
+        <link rel="apple-touch-icon" sizes="180x180" href="assets/img/apple-touch-icon.png" />
+        
+        <title>Startr - kit de démarrage pour intégrateurs</title>
+        <meta name="description" content="" />
+    </head>
+    <body>
+        <header></header>
+        <div id="content">
+            <h1>Startr</h1>
+            <h3>Kit de démarrage pour intégrateurs</h3>
+            <h2>Exemple POPUP</h2>
+            <a class="btn btn-primary" href="javascript:void(0);" data-popup="mon-popup">Ouvrir un popup</a>
+            
+            <div id="mon-popup" class="popup">
+                <h3>Titre popup</h3>
+                <p>Contenu du popup</p>
+                <a class="close-popup" href="javascript:void(0);">Fermer</a>
+            </div>
+        </div> <!-- content -->
+        <footer></footer>
+        <script src="assets/js/jquery-3.2.1.min.js"></script>
+        <script src="assets/js/jquery-cycle2.js"></script>
+        <script src="assets/js/jquery-cycle2-swipe.js"></script>
+        <script src="assets/js/alert-msg.js"></script>
+
+        <script src="assets/js/jrespond-min.js"></script>
+        <script> // jRespond
+            var jRes = jRespond([
+                {label: 'mobile', enter: 0, exit: 639},
+                {label: 'tablette', enter: 640, exit: 999},
+                {label: 'bureau', enter: 1000, exit: 1499},
+                {label: 'unlimited', enter: 1500, exit: 9999}
+            ]);
+        </script>
+
+        <script>// SCRIPTS
+            $(document).ready(function() { 
+                
+                // RETOUR EN HAUT - créer balise #gotop
+                $('#gotop').on('click',function() {  // 
+                    $('html, body').animate({scrollTop:0}, 'slow');
+                    return false;
+                });
+                
+                // DEPLACEMENT ANIME DES LIENS INTERNES DE TYPE #id
+                $('a[href^="#"]').on('click', function() { // Au clic sur un élément
+                    var page = $(this).attr('href'); // Page cible
+                    var speed = 750; // Durée de l'animation (en ms)
+                    $('html, body').animate( { scrollTop: $(page).offset().top }, speed ); // Go
+                    return false;
+                });
+                
+                // BOUTON TOGGLE MAIN NAV
+                $('.main-nav > #toggle-nav').click(function(){
+                    $(this).toggleClass("menu-open");
+                    $('.main-nav > #toggle-nav + ul.wrap').fadeToggle();
+                    return false;
+                });
+                
+                $('.main-nav > #toggle-nav span').click(function(){
+                    $(this).parent().toggleClass("menu-open");
+                    $('.main-nav > #toggle-nav + ul.wrap').fadeToggle();
+                    return false;
+                });
+
+                jRes.addFunc({
+                    breakpoint: 'mobile',
+                    enter: function() {
+                        $('.main-nav > #toggle-nav').removeClass("menu-open");
+                        $('.main-nav > #toggle-nav + ul.wrap').css("display","none");
+                    },
+                    exit: function() {
+                        $('.main-nav > #toggle-nav + ul.wrap').css("display","block");
+                    }
+                });
+                
+                // POPUP
+                $('*[data-popup]').click(function(){
+                    $('body').addClass('mode-popup');
+                    $('#'+$(this).attr('data-popup')).addClass('open');
+                })
+            
+                // CLOSE POPUP
+                $('.close-popup').click(function(){
+                    $('body').removeClass('mode-popup');
+                    $(this).parent('.popup').removeClass('open');
+                })
+                
+                // TOGGLE SECTION   
+                $('.toggle-section > .toggle-item').on('click', '.toggle-head', function () {
+                    if ($(this).parent().hasClass("open")) {
+                        $('.toggle-section > .toggle-item.open > .toggle-content').hide('fast');
+                        $('.toggle-section > .toggle-item.open').removeClass('open');
+                    } else {
+                        $('.toggle-section > .toggle-item.open > .toggle-content').hide('fast');
+                        $('.toggle-section > .toggle-item.open').removeClass('open');
+                        $(this).parent().addClass('open');
+                        $(this).next().show('fast').css('display', 'block');
+                    }
+                    return false;
+                });
+
+            }); // FIN DOCUMENT READY       
+
+        </script>
+    </body>
+</html>
