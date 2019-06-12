@@ -1,2 +1,2 @@
 # startr
-A starter-kit for integrators
+Less tools for integrators

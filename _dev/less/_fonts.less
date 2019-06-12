@@ -1,0 +1,97 @@
+//////// FONTS
+
+@font-face {
+    font-family: '@{picto-font}';
+    src: url('../fonts/@{picto-font}.woff?@{hash-icomoon}') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/// PICTO FONT ///
+
+[class^="icon-"],
+[class*=" icon-"],
+.picto-font {
+    font-weight: normal;
+    font-style: normal;
+    line-height: 1;
+    font-family: @picto-font  !important;
+    speak: none;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+// SET icon-class here
+
+* {
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+}
+
+.icon-instagram {
+    &::before {
+        content: @icon-instagram;
+    }
+}
+
+.icon-pinterest {
+    &::before {
+        content: @icon-pinterest;
+    }
+}
+
+.icon-check {
+    &::before {
+        content: @icon-check;
+    }
+}
+
+.icon-close {
+    &::before {
+        content: @icon-close;
+    }
+}
+
+.icon-select {
+    &::before {
+        content: @icon-select;
+    }
+}
+
+.icon-prev {
+    &::before {
+        content: @icon-prev;
+    }
+}
+
+.icon-next {
+    &::before {
+        content: @icon-next;
+    }
+}
+
+.icon-search {
+    &::before {
+        content: @icon-search;
+    }
+}
+
+.icon-facebook {
+    &::before {
+        content: @icon-facebook;
+    }
+}
+
+.icon-twitter {
+    &::before {
+        content: @icon-twitter;
+    }
+}
+
+.icon-linkedin {
+    &::before {
+        content: @icon-linkedin;
+    }
+}

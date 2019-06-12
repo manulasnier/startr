@@ -1,0 +1,146 @@
+/////// GENERAL /////
+html {
+    font-size: 62.5%;
+}
+
+body {
+    background-color: #fff;
+    font-size: 1.35rem;
+    line-height: 1.4;
+    letter-spacing: 0.07rem;
+    font-family: @font;
+    color: @fontcolor;
+    min-height: 100vh;
+    .flex(column, stretch, space-between);
+
+    .main-content {
+        flex-grow: 1;
+    }
+}
+
+.logo {
+    img {
+        max-width: 400px;
+    }
+}
+
+// TOOLS
+.txt {
+    letter-spacing: 0;
+}
+
+.clear {
+    clear: both;
+}
+
+.hide {
+    display: none;
+}
+
+.hidden {
+    visibility: hidden;
+}
+
+a {
+    color: @color;
+    text-decoration: none;
+    .transition;
+
+    @media print {
+        text-decoration: underline;
+    }
+}
+
+strong,
+b {
+    font-weight: 700;
+}
+
+abbr {
+    border-bottom: 1px dotted #555;
+}
+
+sup {
+    vertical-align: super;
+    font-size: 0.8em;
+}
+
+.blur {
+    opacity: 0.4;
+}
+
+.wrap {
+    margin: 0 auto;
+    width: 100%;
+    max-width: 1200px;
+    position: relative;
+
+    @media @desktop-wide {
+        padding: 0 10px;
+    }
+
+    @media @desktop {
+        max-width: 1000px;
+    }
+
+    @media @laptop {
+        max-width: 768px;
+    }
+
+    @media @tablet {
+        max-width: 640px;
+    }
+
+    @media @mobile {
+        max-width: none;
+    }
+}
+
+.main-content {
+    // gabarit principal
+} // .main-content
+
+/// LAYOUT ///
+.cols {
+    display: flex;
+    justify-content: space-between;
+
+    .col2 {
+        width: 49%;
+    }
+
+    .col3 {
+        width: 32%;
+    }
+} // .cols
+
+// HEADINGS
+
+h2,
+.h2 {
+    font-size: 2rem;
+    text-transform: uppercase;
+    margin-bottom: 35px;
+    line-height: 1.1;
+}
+
+// 404
+.er404 {
+    .main-content {
+        min-height: 715px;
+        background-color: #ebebeb;
+
+        &::before {
+            display: block;
+            content: '';
+            background-color: #fff;
+            height: 290px;
+            width: 100%;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: -245px;
+        }
+    }
+} // .er404
