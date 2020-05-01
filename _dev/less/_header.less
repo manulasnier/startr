@@ -1,5 +1,6 @@
 /////// HEADER //////
 
+<<<<<<< HEAD
 header {
     // set syle header here
 
@@ -25,10 +26,28 @@ header {
 } // .menu
 
 .toggle-nav {
+=======
+body > header {
+    
+} // header
+
+
+// TOGGLE NAV //
+.main-nav {
+	@media @tablet {
+	    ul.wrap {
+	        display: none;
+	    }
+	}
+} // main-nav
+
+#toggle-nav {
+>>>>>>> 03a05755dee59862466f9ad13a7dc35e374f12a4
     display: none;
     cursor: pointer;
     position: relative;
     width: 100px;
+<<<<<<< HEAD
     height: 55px;
     background-color: #fff;
     margin: auto;
@@ -38,10 +57,21 @@ header {
         display: block;
     }
 
+=======
+    height: 60px;
+    background-color: #666;
+    margin: auto;
+    
+    @media @tablet {
+        display: block;
+    }
+    
+>>>>>>> 03a05755dee59862466f9ad13a7dc35e374f12a4
     span {
         position: absolute;
         top: 50%;
         left: 50%;
+<<<<<<< HEAD
         margin-left: -10px;
         display: block;
         width: 20px;
@@ -49,6 +79,15 @@ header {
         background-color: @color;
         .rotate(0);
 
+=======
+        margin-left: -12px;
+        display: block;
+        width: 20px;
+        height: 3px;
+        background-color: #fff;
+       .rotate(0deg);
+        
+>>>>>>> 03a05755dee59862466f9ad13a7dc35e374f12a4
         &::before,
         &::after {
             content: '';
@@ -58,6 +97,7 @@ header {
             display: block;
             width: 20px;
             height: 3px;
+<<<<<<< HEAD
             background-color: @color;
             transform: translateY(-6px);
             .transition;
@@ -75,10 +115,33 @@ header {
                 .rotate(-45deg);
             }
 
+=======
+            background-color: #fff;
+            -webkit-transform: translateY(-6px);
+            transform: translateY(-6px);
+            .transition;
+        }
+        
+        &::after {
+            top: 12px;
+        }
+        
+        .menu-open& {
+            background-color: #666;
+            
+            &::before {
+                .rotate(-45deg);
+            }
+            
+>>>>>>> 03a05755dee59862466f9ad13a7dc35e374f12a4
             &::after {
                 .rotate(45deg);
                 .origin(24px -4px);
             }
         } // .menu-open
     }
+<<<<<<< HEAD
 } // .toggle-nav
+=======
+}
+>>>>>>> 03a05755dee59862466f9ad13a7dc35e374f12a4

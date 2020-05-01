@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ///// FLEX POWER ////
 // USE ex : .flex(row,center,space-between);
 
@@ -108,3 +109,83 @@
         opacity: @opacity;
     }
 }
+=======
+/////////////// CLASSES CSS3 PRÉCONSTRUITES ////////////
+
+//// Background-size ////// .bg-size(cover); 
+.bg-size (@prop: cover) {
+ 	background-size: @prop; 
+ }
+ 
+/// Coins arrondis /////  .rounded(20px); 
+.rounded (@radius: 5px) {
+	border-radius: @radius;
+}
+
+/// Box shadow inset /////  .box-shadow-inset(-3px, 0px, 3px, 0.5); 
+.box-shadow-inset (@x: 0px, @y: 3px, @blur: 5px, @hex: 0.5) {
+	box-shadow: inset @x @y @blur rgba(0,0,0,@hex);
+}
+
+/// Box shadow /////  .box-shadow(-3px, 0px, 3px, 0.5); 
+.box-shadow (@x: 0px, @y: 3px, @blur: 5px, @hex: 0.5) {
+	box-shadow: @x @y @blur rgba(0,0,0,@hex);
+}
+
+/// Text shadow  /////  .txt-shadow(1px, 1px, 1px, #fff); 
+.txt-shadow (@x: 1px, @y: 1px, @blur: 1px, @hex: #fff) {
+	text-shadow: @x @y @blur @hex;
+}
+
+/// Transition ///// .transition(all, 250ms, ease); 
+.transition (@prop: all, @time: 250ms, @ease: ease) {
+	transition: @prop @time @ease;
+}
+
+/// Transform rotate ///// .rotate(180deg);  
+.rotate (@rotate: 180deg) {
+	transform: rotate(@rotate);
+}
+
+/// Transform translate ///// .translate(20px, 10px); 
+.translate (@y: 20px, @x: 10px) {
+	transform: translateY(@y) translateX(@x);
+}
+
+/// Transform translateX ///// .translateX(10px); 
+.translateX (@x: 10px) {
+	transform: translateX(@x);
+}
+
+/// Transform translateY ///// .translateY(20px); 
+.translateY (@y: 20px) {
+	transform: translateY(@y);
+}
+
+/// Transform scale ///// .scale(1.4); 
+.scale (@val: 1.4) {
+	transform: scale(@val);
+}
+
+/// Transform origin ///// .origin(0,0); 
+.origin (@x: 0, @y: 0) {
+	transform-origin: @x @y;
+}
+
+/// Transform ///// .transform(5deg, 0.5, 1deg, 0);  
+.transform (@rotate: 90deg, @scale: 1, @skew: 1deg, @translate: 10px) {
+	transform: rotate(@rotate) scale(@scale) skew(@skew) translate(@translate);
+}
+ 
+/// Gradient ///// .gradient(left, #663333, 50%, #333333, 60%, 0.45, 1); 
+.gradient (@origin: bottom, @color1: #fff, @color2: #000) {
+	background-image: linear-gradient(to @origin, @color1, @color2); 
+}
+
+/// Column ///// .col(3, 290px, 42px);  
+.col (@count: 3, @width: 290px, @gap: 42px) {
+	column-count: @count;
+	column-width: @width;
+	column-gap: @gap;
+}
+>>>>>>> 03a05755dee59862466f9ad13a7dc35e374f12a4

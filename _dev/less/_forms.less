@@ -1,6 +1,12 @@
 //////// FORMS  ///////
+<<<<<<< HEAD
 input:-webkit-autofill {
     -webkit-box-shadow: 0 0 0 1000px white inset;
+=======
+
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px white inset;
+>>>>>>> 03a05755dee59862466f9ad13a7dc35e374f12a4
 }
 
 input[type="text"],
@@ -10,6 +16,7 @@ input[type="email"],
 input[type="number"],
 input[type="date"],
 input[type="tel"],
+<<<<<<< HEAD
 input[type="url"],
 textarea {
     appearance: none;
@@ -65,6 +72,38 @@ button {
     border: 0 none;
     cursor: pointer;
     .rounded(0);
+=======
+textarea {
+    appearance: none;
+    border: 1px solid #eee;
+    color: #838383;
+    padding: 0 15px;
+    height: 45px;
+    background-color: #ededed;
+    font-size: 1.5rem;
+    font-family: @font;
+    font-style: italic;
+    margin-bottom: 20px;
+     .rounded(3px);
+    
+    &:focus {
+        outline: none;
+        color: @color2;
+        background-color: transparent;
+        border-color: @color2;
+    }
+}
+
+input[type="submit"],
+input[type="button"],
+button[type="submit"],
+button {
+    .btn;
+    appearance: none;
+    font-family: @font;
+    padding: 0 10px;
+    cursor: pointer;
+>>>>>>> 03a05755dee59862466f9ad13a7dc35e374f12a4
 }
 
 textarea {
@@ -73,12 +112,17 @@ textarea {
     min-height: 150px;
 }
 
+<<<<<<< HEAD
 label,
 .label {
+=======
+label {
+>>>>>>> 03a05755dee59862466f9ad13a7dc35e374f12a4
     display: block;
     color: @fontcolor;
     text-align: left;
     margin-bottom: 10px;
+<<<<<<< HEAD
 
     em {
         display: block;
@@ -139,6 +183,101 @@ label,
     z-index: 1;
 
     label {
+=======
+}
+    
+input::-placeholder {
+    font-style: italic;
+}
+
+textarea::-placeholder {
+   font-style: italic;
+}
+
+// VARIANT //
+
+.theme-variant {
+    input[type="text"],
+    input[type="password"],
+    input[type="search"],
+    input[type="email"],
+    input[type="number"],
+    input[type="date"],
+    input[type="tel"],
+    textarea {
+        border: 1px solid #eee;
+        color: #838383;
+        background-color: #ededed;
+        
+        &:focus {
+            color: @color2;
+            background-color: transparent;
+            border-color: @color2;
+        }
+    }
+
+    input[type="submit"],
+    input[type="button"],
+    button[type="submit"],
+    button {
+       
+    }
+} // theme-variant
+
+////  CAPTCHA  /////
+
+#captcha {
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+	margin-bottom: 20px;
+	
+	img {
+		min-width: 100px;
+		height: auto;
+		margin-right: 10px;
+	}
+	
+	input[type="text"] {
+		max-width: 190px;
+		margin-bottom: 0;
+	}
+	
+	a {
+		height: 40px;
+		width: 40px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		margin-right: 20px;
+	}
+	
+	#reload {
+		height: 30px;
+		width: 30px;
+		
+	    .transition; 
+	    cursor: pointer;
+	    
+	    path {
+	    	fill: @color;
+	    }
+	    
+	    &:hover {
+	        .rotate(360deg);
+	        path {
+				fill: @color2;
+			}
+		}
+	}
+} // captcha
+
+////// BOUTONS CHECKBOX /////
+
+.checkbox {
+    label {
+        color: #333;
+>>>>>>> 03a05755dee59862466f9ad13a7dc35e374f12a4
         font-family: @font;
         text-transform: none;
         display: flex;
@@ -149,14 +288,22 @@ label,
             content: '';
             height: 20px;
             width: 20px;
+<<<<<<< HEAD
             min-width: 20px;
             border: 2px solid #ddd;
             margin-right: 10px;
             padding-right: 15px;
+=======
+            border: 1px solid #eee;
+            background-color: #eee;
+            .rounded(3px);
+            margin-right: 8px;
+>>>>>>> 03a05755dee59862466f9ad13a7dc35e374f12a4
         }
 
         &::after {
             position: absolute;
+<<<<<<< HEAD
             left: 1px;
             top: 50%;
             margin-top: -2px;
@@ -191,21 +338,52 @@ label,
             &::after {
                 color: @color;
                 outline: none;
+=======
+            left: 3px;
+            top: 3px;
+            .picto-font;
+            content: "\f00c"; // fa-check
+            color: #eee;
+            font-size: 1.4rem;
+            .transition();
+        }
+    }
+
+    input {
+        display: none;
+
+        &:checked + label {
+            &::before {
+                background-color: #fff;
+                border-color: @color2;
+            }
+
+            &::after {
+                color: @color2;
+>>>>>>> 03a05755dee59862466f9ad13a7dc35e374f12a4
             }
         }
     }
 } // checkbox
 
+<<<<<<< HEAD
 ///// LISTE DE BOUTONS RADIO
 .list-radio {
     position: relative;
     z-index: 1;
+=======
+
+///// LISTE DE BOUTONS RADIO
+
+.list-radio {
+>>>>>>> 03a05755dee59862466f9ad13a7dc35e374f12a4
     margin-bottom: 13px;
 
     li {
         margin-bottom: 5px;
     }
 
+<<<<<<< HEAD
     input[type="radio"] {
         position: absolute;
         top: 0;
@@ -218,11 +396,19 @@ label,
         z-index: -1;
         appearance: none;
         .rounded(50%);
+=======
+    input {
+        display: none;
+>>>>>>> 03a05755dee59862466f9ad13a7dc35e374f12a4
 
         & + label {
             position: relative;
             display: flex;
             text-transform: none;
+<<<<<<< HEAD
+=======
+            color: #333;
+>>>>>>> 03a05755dee59862466f9ad13a7dc35e374f12a4
             font-family: @font;
             cursor: pointer;
 
@@ -254,18 +440,27 @@ label,
             font-weight: 700;
 
             &::before {
+<<<<<<< HEAD
                 border: 1px solid @color;
+=======
+                border: 1px solid @color2;
+>>>>>>> 03a05755dee59862466f9ad13a7dc35e374f12a4
                 background-color: #fff;
             }
 
             &::after {
+<<<<<<< HEAD
                 background-color: @color;
+=======
+                background-color: @color2;
+>>>>>>> 03a05755dee59862466f9ad13a7dc35e374f12a4
             }
         }
     }
 } // list-radio
 
 ///// SELECT CUSTOM ////
+<<<<<<< HEAD
 .habillage {
     height: 50px;
     max-width: 250px;
@@ -291,6 +486,31 @@ label,
         .picto-font;
         .rotate(90deg);
         //content: @icon-next;
+=======
+
+.habillage {
+        height: 40px;
+        max-width: 400px;
+        margin-bottom: 20px;
+        position: relative;
+        background-color: #eee;
+        flex-grow: 1;
+        .rounded(3px);
+
+    &::after {
+        .picto-font;
+        position: absolute;
+        right: 0;
+        top: 0;
+        content: ""; // icon-select
+        font-size: 2rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 40px;
+        width: 30px;
+        color: #666;
+>>>>>>> 03a05755dee59862466f9ad13a7dc35e374f12a4
     }
 
     select {
@@ -298,6 +518,7 @@ label,
         left: 0;
         top: 0;
         appearance: none;
+<<<<<<< HEAD
         background-color: transparent;
         text-overflow: '';
         border: 0 none;
@@ -368,3 +589,17 @@ label,
         }
     } // .file-selected
 } // .input-file
+=======
+        ms-appearance: none;
+        text-overflow: '';
+        border: 0 none;
+        background-color: transparent;
+        font-family: inherit;
+        font-size: 1.4rem;
+        height: 100%;
+        width: 100%;
+        padding-left: 15px;
+        z-index: 99;
+    }
+} // habillage
+>>>>>>> 03a05755dee59862466f9ad13a7dc35e374f12a4
