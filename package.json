@@ -3,7 +3,6 @@
     "version": "1.0.0",
     "description": "Starter Kit for integrator",
     "license": "GNU GPL v3",
-    "private": true,
     "authors": [
         {
             "name": "Manu Lasnier",
@@ -12,16 +11,22 @@
         }
     ],
     "devDependencies": {
+        "autoprefixer": "^9.7.3",
+        "cssnano": "^4.1.10",
         "gulp": "^4.0.2",
+        "gulp-imagemin": "^7.1.0",
         "gulp-less": "^4.0.1",
+        "gulp-noop": "^1.0.0",
         "gulp-postcss": "^8.0.0",
         "gulp-sourcemaps": "^2.6.5",
         "gulp-stylelint": "^13.0.0",
-        "autoprefixer": "^9.7.3"
+        "gulp-uglify": "^3.0.2",
+        "stylelint": "^13.3.3",
+        "stylelint-config-standard": "^20.0.0"
     },
     "scripts": {
-        "dev": "gulp css",
-        "watch": "gulp watch",
-        "build": "gulp production"
+        "dev": "NODE_ENV=development gulp",
+        "watch": "NODE_ENV=development gulp watch",
+        "build": "NODE_ENV=production gulp"
     }
 }
