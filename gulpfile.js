@@ -12,7 +12,7 @@ var cssnano = require('cssnano');
 var gulpStylelint = require('gulp-stylelint');
 var imagemin = require('gulp-imagemin');
 var sourcemaps = dev ? require('gulp-sourcemaps') : null;
-var uglify = dev ? require('gulp-uglify') : null;
+var uglify = !dev ? require('gulp-uglify') : null;
 
 // DIR
 var src = './src/';
