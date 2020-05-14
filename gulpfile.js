@@ -3,7 +3,7 @@
 // ENV
 var dev = ((process.env.NODE_ENV || 'development').trim().toLowerCase() === 'development');
 
-var gulp = require('gulp');
+const { src, dest, series, parallel, watch } = require('gulp')
 var less = require('gulp-less');
 var noop = require("gulp-noop");
 var postcss = require('gulp-postcss');
@@ -14,34 +14,55 @@ var imagemin = require('gulp-imagemin');
 var sourcemaps = dev ? require('gulp-sourcemaps') : null;
 var uglify = !dev ? require('gulp-uglify') : null;
 
-// DIR
-var src = './src/';
-var dist = './dist/';
+// PATH
+const paths = {
+    css: {
+        entry: './src/less/style.less',
+        src: './src/less/*.less',
+        dest: './dist/css'
+    },
+
+    images: {
+        src: './src/img/*',
+        dest: './dist/images'
+    },
+
+    js: {
+        src: './src/js/*.js',
+        dest: './dist/js'
+    },
+    fonts: {
+        src: './src/fonts/*',
+        dest: './dist/fonts'
+    },
+}
 
 // CSS
-gulp.task('css', function () {
-    return gulp.src(src + 'less/style.less')
+function csslint() {
+    return src(paths.css.src)
 
     .pipe(gulpStylelint({
-        failAfterError: true,
+        failAfterError: false,
         reporters: [
             {formatter: 'verbose', console: true}
         ],
         debug: true
     }))
+}
+
+function styles() {
+    return src(paths.css.entry)
 
     .pipe(sourcemaps ? sourcemaps.init() : noop())
-
     .pipe(less())
     .pipe(postcss())
-
     .pipe(sourcemaps ? sourcemaps.write() : noop())
-    .pipe(gulp.dest(dist + 'css/'));
-});
+    .pipe(dest(paths.css.dest))
+}
 
 // IMAGES
-gulp.task('images', function () {
-    return gulp.src(src + 'img/*.+(png|jpg|gif|svg)')
+function images() {
+    return src(paths.images.src) 
 
     .pipe(imagemin([
         imagemin.gifsicle({interlaced: true}),
@@ -55,28 +76,41 @@ gulp.task('images', function () {
         })
     ]))
 
-    .pipe(gulp.dest(dist + 'images/'));
-});
+    .pipe(dest(paths.images.dest))
+}
 
 // FONTS
-gulp.task('fonts', function () {
-    return gulp.src(src + 'fonts/*.+(woff|woff2)')
-    .pipe(gulp.dest(dist + 'fonts/'));
-});
+function fonts() {
+    return src(paths.fonts.src)
+    .pipe(dest(paths.fonts.dest))
+}
 
 // JS
-gulp.task('js', function () {
-    return gulp.src(src + 'js/app.js')
-
+function scripts() {
+    return src(paths.js.src)
     //.pipe(concat('all.js'))
     .pipe(uglify ? uglify() : noop())
-    .pipe(gulp.dest(dist + 'js/'));
-});
+    .pipe(dest(paths.js.dest))
+}
 
-// TASKS
-gulp.task('default', gulp.parallel('images','css','fonts','js'));
+// WATCH
+function watchFiles() {
+    watch(paths.css.src, { ignoreInitial: false }, series(csslint,styles))
+    watch(paths.js.src, { ignoreInitial: false }, scripts)
+    watch(paths.fonts.src, { ignoreInitial: false }, fonts)
+    watch(paths.images.src, { ignoreInitial: false }, images)
+}
 
-// WATCHER CSS
-gulp.task('watch', function() {
-    gulp.watch(src + 'less/style.less', gulp.series('css'));
-});
+// EXPORT TASK
+module.exports = {
+    default: parallel(
+        series(csslint, styles),
+        scripts,
+        images,
+        fonts
+    ),
+
+    onlycss: series(csslint,styles),
+
+    watch: watchFiles
+}
