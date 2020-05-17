@@ -13,11 +13,13 @@
     "devDependencies": {
         "autoprefixer": "^9.7.3",
         "cssnano": "^4.1.10",
+        "del": "^5.1.0",
         "gulp": "^4.0.2",
         "gulp-imagemin": "^7.1.0",
         "gulp-less": "^4.0.1",
         "gulp-noop": "^1.0.0",
         "gulp-postcss": "^8.0.0",
+        "gulp-rev": "^9.0.0",
         "gulp-sourcemaps": "^2.6.5",
         "gulp-stylelint": "^13.0.0",
         "gulp-uglify": "^3.0.2",
@@ -25,7 +27,7 @@
         "stylelint-config-standard": "^20.0.0"
     },
     "scripts": {
-        "dev": "NODE_ENV=development gulp onlycss",
+        "dev": "NODE_ENV=development gulp dev",
         "watch": "NODE_ENV=development gulp watch",
         "build": "NODE_ENV=production gulp"
     }

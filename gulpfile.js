@@ -1,4 +1,4 @@
-// GULP Config
+// GULP 4 Config
 
 // ENV
 var dev = ((process.env.NODE_ENV || 'development').trim().toLowerCase() === 'development');
@@ -6,6 +6,7 @@ var dev = ((process.env.NODE_ENV || 'development').trim().toLowerCase() === 'dev
 const { src, dest, series, parallel, watch } = require('gulp')
 var less = require('gulp-less');
 var noop = require("gulp-noop");
+var del = require("del");
 var postcss = require('gulp-postcss');
 var autoprefixer = require('autoprefixer');
 var cssnano = require('cssnano');
@@ -13,9 +14,13 @@ var gulpStylelint = require('gulp-stylelint');
 var imagemin = require('gulp-imagemin');
 var sourcemaps = dev ? require('gulp-sourcemaps') : null;
 var uglify = !dev ? require('gulp-uglify') : null;
+var rev = !dev ? require('gulp-rev') : null;
 
 // PATH
 const paths = {
+    dest: './dist',
+    manifest: 'dist/manifest.json',
+
     css: {
         entry: './src/less/style.less',
         src: './src/less/*.less',
@@ -32,9 +37,14 @@ const paths = {
         dest: './dist/js'
     },
     fonts: {
-        src: './src/fonts/*',
+        src: './src/fonts/*.{woff,woff2}',
         dest: './dist/fonts'
     },
+}
+
+// CLEAN BEFORE BUILD
+function cleanDist() {
+    return del(paths.dest);
 }
 
 // CSS
@@ -57,7 +67,13 @@ function styles() {
     .pipe(less())
     .pipe(postcss())
     .pipe(sourcemaps ? sourcemaps.write() : noop())
+    .pipe(rev ? rev() : noop())
     .pipe(dest(paths.css.dest))
+    .pipe(rev ? rev.manifest(paths.manifest, {
+        merge: true,
+        base: paths.dest
+    }) : noop())
+    .pipe(rev ? dest(paths.dest) : noop())
 }
 
 // IMAGES
@@ -76,13 +92,25 @@ function images() {
         })
     ]))
 
+    .pipe(rev ? rev() : noop())
     .pipe(dest(paths.images.dest))
+    .pipe(rev ? rev.manifest(paths.manifest, {
+        merge: true,
+        base: paths.dest
+    }) : noop())
+    .pipe(rev ? dest(paths.dest) : noop())
 }
 
 // FONTS
 function fonts() {
     return src(paths.fonts.src)
+    .pipe(rev ? rev() : noop())
     .pipe(dest(paths.fonts.dest))
+    .pipe(rev ? rev.manifest(paths.manifest, {
+        merge: true,
+        base: paths.dest
+    }) : noop())
+    .pipe(rev ? dest(paths.dest) : noop())
 }
 
 // JS
@@ -90,7 +118,13 @@ function scripts() {
     return src(paths.js.src)
     //.pipe(concat('all.js'))
     .pipe(uglify ? uglify() : noop())
+    .pipe(rev ? rev() : noop())
     .pipe(dest(paths.js.dest))
+    .pipe(rev ? rev.manifest(paths.manifest, {
+        merge: true,
+        base: paths.dest
+    }) : noop())
+    .pipe(rev ? dest(paths.dest) : noop())
 }
 
 // WATCH
@@ -103,14 +137,27 @@ function watchFiles() {
 
 // EXPORT TASK
 module.exports = {
-    default: parallel(
-        series(csslint, styles),
+    // BUILD
+    default: series(
+        cleanDist,
+        csslint,
+        styles,
         scripts,
-        images,
-        fonts
+        fonts,
+        images
     ),
 
-    onlycss: series(csslint,styles),
+    // DEV
+    dev: series(
+        cleanDist,
+        parallel(
+            series(csslint,styles),
+            scripts,
+            fonts,
+            images
+        )
+    ),
 
-    watch: watchFiles
+    // WATCH
+    watch: series(cleanDist, watchFiles)
 }
