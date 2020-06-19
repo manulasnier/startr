@@ -15,6 +15,7 @@ var imagemin = require('gulp-imagemin');
 var sourcemaps = dev ? require('gulp-sourcemaps') : null;
 var uglify = !dev ? require('gulp-uglify') : null;
 var rev = !dev ? require('gulp-rev') : null;
+var revRewrite = !dev ? require('gulp-rev-rewrite') : null;
 
 // PATH
 const paths = {
@@ -127,6 +128,15 @@ function scripts() {
     .pipe(rev ? dest(paths.dest) : noop())
 }
 
+// REWRITE ASSETS CSS WITH HASH
+function rewrite() {
+    const manifest = src('dist/manifest.json');
+
+    return src('dist/css/*.css')
+    .pipe(revRewrite({ manifest }))
+    .pipe(dest('dist/css'));
+}
+
 // WATCH
 function watchFiles() {
     watch(paths.css.src, { ignoreInitial: false }, series(csslint,styles))
@@ -144,7 +154,8 @@ module.exports = {
         styles,
         scripts,
         fonts,
-        images
+        images,
+        rewrite
     ),
 
     // DEV

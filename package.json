@@ -20,6 +20,7 @@
         "gulp-noop": "^1.0.0",
         "gulp-postcss": "^8.0.0",
         "gulp-rev": "^9.0.0",
+        "gulp-rev-rewrite": "^3.0.3",
         "gulp-sourcemaps": "^2.6.5",
         "gulp-stylelint": "^13.0.0",
         "gulp-uglify": "^3.0.2",
