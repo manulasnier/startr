@@ -9,16 +9,21 @@ var noop = require("gulp-noop");
 var del = require("del");
 var postcss = require('gulp-postcss');
 var autoprefixer = require('autoprefixer');
-var cssnano = require('cssnano');
 var gulpStylelint = require('gulp-stylelint');
-var imagemin = require('gulp-imagemin');
+
+// ONLY FOR DEV
 var sourcemaps = dev ? require('gulp-sourcemaps') : null;
+
+// ONLY FOR PROD
+var imagemin = !dev ? require('gulp-imagemin') : null;
 var uglify = !dev ? require('gulp-uglify') : null;
 var rev = !dev ? require('gulp-rev') : null;
 var revRewrite = !dev ? require('gulp-rev-rewrite') : null;
+var cssnano = !dev ? require('cssnano') : null;
 
 // PATH
 const paths = {
+    todel: './dist/**',
     dest: './dist',
     manifest: 'dist/manifest.json',
 
@@ -45,7 +50,7 @@ const paths = {
 
 // CLEAN BEFORE BUILD
 function cleanDist() {
-    return del(paths.dest);
+    return del(paths.todel);
 }
 
 // CSS
@@ -81,7 +86,7 @@ function styles() {
 function images() {
     return src(paths.images.src) 
 
-    .pipe(imagemin([
+    .pipe(imagemin ? imagemin([
         imagemin.gifsicle({interlaced: true}),
         imagemin.mozjpeg({quality: 85, progressive: true}),
         imagemin.optipng({optimizationLevel: 5}),
@@ -91,7 +96,7 @@ function images() {
                 {cleanupIDs: false}
             ]
         })
-    ]))
+    ]) : noop())
 
     .pipe(rev ? rev() : noop())
     .pipe(dest(paths.images.dest))
