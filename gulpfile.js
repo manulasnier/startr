@@ -35,7 +35,7 @@ const paths = {
 
     images: {
         src: './src/img/*',
-        dest: './dist/images'
+        dest: './dist/img'
     },
 
     js: {
