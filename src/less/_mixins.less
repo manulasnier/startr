@@ -12,6 +12,18 @@
     justify-content: @js;
 }
 
+// BTN CUSTOM
+.btn-custom (@bgcolor: #000, @textcolor: #fff, @invert: false) {
+    background-color: if(@invert, transparent, @bgcolor);
+    border-color: @bgcolor;
+    color: if(@invert, @bgcolor, @textcolor);
+
+    &:hover {
+        background-color: if(@invert, @bgcolor, transparent);
+        color: if(@invert, @textcolor, @bgcolor);
+    }
+}
+
 /// Coins arrondis
 .rounded (@radius: 5px) {
     border-radius: @radius;
@@ -78,10 +90,13 @@
 }
 
 /// Column
-.col (@count: 3, @width: 290px, @gap: 42px) {
-    column-count: @count;
-    column-width: @width;
+.column (@count: 3, @width: 290px, @gap: 42px) {
+    columns: @width @count;
     column-gap: @gap;
+
+    & > * {
+        break-inside: avoid;
+    }
 }
 
 // FORMS
