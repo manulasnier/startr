@@ -1,3 +1,4 @@
 /node_modules/
-/_dev/less/_mixins.less
+/src/less/_mixins.less
+/src/less/_reset.less
 /dist/css/

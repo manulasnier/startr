@@ -28,7 +28,9 @@ const paths = {
     manifest: 'dist/manifest.json',
 
     css: {
-        entry: './src/less/style.less',
+        entry: [
+            './src/less/app.less'
+        ],
         src: './src/less/*.less',
         dest: './dist/css'
     },
@@ -84,7 +86,7 @@ function styles() {
 
 // IMAGES
 function images() {
-    return src(paths.images.src) 
+    return src(paths.images.src)
 
     .pipe(imagemin ? imagemin([
         imagemin.gifsicle({interlaced: true}),
