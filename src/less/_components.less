@@ -1,90 +1,50 @@
 // BLOCS & COMPONENTS
 
 // BOUTONS ///
-
 .btn {
     margin: auto;
-    padding: 0;
-    font-size: 1.8rem;
+    font-size: 1.6rem;
     text-transform: uppercase;
+    padding: 0 20px;
+    min-height: @height-item;
+    height: @height-item;
+    text-align: center;
+    border: 1px solid transparent;
     .flex-i(row,center,center);
+    .rounded(@rounded-item);
 
     @media print {
         display: none;
     }
 
-    &.btn-primary {
-        background-color: @color;
-        color: #fff;
-        padding: 0 20px;
-        min-height: 50px;
-        height: 50px;
-        text-align: center;
-
-        &:hover {
-            background-color: shade(@color, 5%);
-        }
+    span {
+        margin-right: 10px;
     }
+} // .btn
 
-    &.fat {
-        height: 55px;
-        min-height: 55px;
+.btn-primary {
+    .btn-color(@color, #fff);
+
+    &.invert {
+        .btn-color-invert(@color, #fff);
     }
+}
 
-    &.btn-secondary {
-        background-color: #4c4c4c;
+.btn-secondary {
+    .btn-color(@color2, #fff);
 
-        &:hover {
-            background-color: shade(#4c4c4c, 5%);
-        }
+    &.invert {
+        .btn-color-invert(@color2, #fff);
     }
+}
 
-    &.btn-tertiary {
-        background-color: @color3;
-        color: #fff;
+.btn-tertiary {
+    .btn-color(@color3, #fff);
 
-        &:hover {
-            background-color: shade(@color3, 5%);
-        }
+    &.invert {
+        .btn-color-invert(@color3, #fff);
     }
-
-    &.btn-inline {
-        .flex-i(row,center,flex-start);
-
-        border-bottom: 1px solid @color;
-        height: 25px;
-        color: @black;
-        margin-bottom: 10px;
-        text-align: left;
-
-        &:hover {
-            color: @color;
-        }
-
-        @media @tablet {
-            justify-content: center;
-        }
-    }
-
-    &.btn-back {
-        color: @color3;
-        display: flex;
-        margin: 0;
-        height: 50px;
-        width: 110px;
-        justify-content: flex-start;
-
-        &:hover {
-            background-color: @color3;
-            color: #fff;
-        }
-
-        i {
-            margin-right: 8px;
-            font-size: 2.8rem;
-        }
-    }
-} // btn
+}
 
 //// SHARER
 .sharer {

@@ -1,3 +1,6 @@
+// MIXINS
+
+// FLEX
 .flex (@fd: row, @align: center, @js: space-between) {
     display: flex;
     flex-direction: @fd;
@@ -12,15 +15,58 @@
     justify-content: @js;
 }
 
-// BTN CUSTOM
-.btn-custom (@bgcolor: #000, @textcolor: #fff, @invert: false) {
-    background-color: if(@invert, transparent, @bgcolor);
-    border-color: @bgcolor;
-    color: if(@invert, @bgcolor, @textcolor);
+// GRID SYSTEM
+.grid (@row: 1fr, @col: 1fr 1fr 1fr, @gap:20px ) {
+    display: grid;
+    grid-template-rows: @row;
+    grid-template-columns: @col;
+    grid-gap: @gap;
+}
+
+.grid-ar (@row: 1fr, @col: 1fr 1fr 1fr, @gap:20px) {
+    display: grid;
+    grid-auto-rows: @row;
+    grid-template-columns: @col;
+    grid-gap: @gap;
+}
+
+.grow (@start: 1, @end: -1) {
+    grid-row-start: @start;
+    grid-row-end: @end;
+}
+
+.gcol (@start: 1, @end: -1) {
+    grid-column-start: @start;
+    grid-column-end: @end;
+}
+
+.garea (@rstart: 1, @rend: -1, @cstart: 1, @cend: -1) {
+    grid-row-start: @rstart;
+    grid-row-end: @rend;
+    grid-column-start: @cstart;
+    grid-column-end: @cend;
+}
+
+// BTN COLOR
+.btn-color (@colorbg: #ddd, @colortxt: #fff) {
+    border-color: @colorbg;
+    background-color: @colorbg;
+    color: @colortxt;
 
     &:hover {
-        background-color: if(@invert, @bgcolor, transparent);
-        color: if(@invert, @textcolor, @bgcolor);
+        background-color: transparent;
+        color: @colorbg;
+    }
+}
+
+.btn-color-invert (@colorbg: #ddd, @colortxt: #fff) {
+    color: @colorbg;
+    border-color: @colorbg;
+    background-color: transparent;
+
+    &:hover {
+        color: @colortxt;
+        background-color: @colorbg;
     }
 }
 
@@ -40,8 +86,8 @@
 }
 
 /// Text shadow
-.txt-shadow (@x: 1px, @y: 1px, @blur: 1px, @spread: 5px, @hex: #fff) {
-    text-shadow: @x @y @blur @spread @hex;
+.txt-shadow (@x: 1px, @y: 1px, @blur: 1px, @hex: #fff) {
+    text-shadow: @x @y @blur @hex;
 }
 
 /// Transition
