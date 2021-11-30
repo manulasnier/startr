@@ -112,6 +112,15 @@ let config = {
             filename: devMode ? '[name].css' : '[name]-[contenthash].css',
         }),
 
+        new StylelintPlugin({
+            configFile: '.stylelintrc.js',
+            context: 'src',
+            files: '**/*.less',
+            failOnError: false,
+            quiet: false,
+            emitErrors: true
+        }),
+
         new CopyPlugin({
             patterns: [
                 {
@@ -124,14 +133,13 @@ let config = {
             },
         }),
 
-        new StylelintPlugin({
-            configFile: '.stylelintrc.js',
-            context: 'src',
-            files: '**/*.less',
-            failOnError: false,
-            quiet: false,
-            emitErrors: true
-        }),
+        devMode ? new ImageMinimizerPlugin({
+            test: /\.(png|jp(e)g)$/i,
+            filename: '[name].webp',
+            minimizerOptions: {
+                plugins: ['imagemin-webp']
+            }
+        }) : false,
 
         !devMode ? new ImageMinimizerPlugin({
             minimizerOptions: {
@@ -147,14 +155,6 @@ let config = {
                         ],
                     }]
                 ]
-            }
-        }) : false,
-
-        !devMode ? new ImageMinimizerPlugin({
-            test: /\.(png|jp(e)g)$/i,
-            filename: '[name]-[contenthash].webp',
-            minimizerOptions: {
-                plugins: ['imagemin-webp']
             }
         }) : false,
 

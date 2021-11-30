@@ -1,19 +1,19 @@
+<?php include('config.php'); ?>
 <!DOCTYPE html>
 <html lang="fr">
 	<head>
         <meta charset="utf-8" />
 		<title>Startr - with less than nothing</title>
 		<meta name="description" content="Startr - with less than nothing" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width" />
-        <link rel="stylesheet" href="dist/app.css" />
-        <link rel="icon" type="image/png" href="dist/favicon.png" />
+        <link rel="stylesheet" href="<?= asset('app.css'); ?>" />
+        <link rel="icon" type="image/png" href="<?= asset('favicon.png'); ?>" />
 	</head>
 	<body>
 		<header>
             <h1>Startr</h1>
             <h2>Less tools for integrators</h2>
-            <img class="logo" src="dist/logo.svg" alt="StartR">
+            <img class="logo" src="<?= asset('logo.svg'); ?>" alt="StartR">
         </header>
 		<div class="content">
 
@@ -92,7 +92,7 @@
             Less by Startr
         </footer>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <script src="dist/app.js"></script>
+        <script src="<?= asset('app.js'); ?>"></script>
 		
 	</body>
 </html>
