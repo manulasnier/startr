@@ -116,7 +116,7 @@ let config = {
         ]
     },
 
-plugins: [
+    plugins: [
         new CleanWebpackPlugin(),
 
         new MiniCssExtractPlugin({
@@ -147,3 +147,5 @@ plugins: [
         new WebpackManifestPlugin(options)
     ].filter(Boolean)
 };
+
+module.exports = config;
