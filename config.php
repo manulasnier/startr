@@ -13,11 +13,14 @@
             }
         }
 
-        $ext = explode('.',$file);
+        // WEBP ?
+        if( USE_WEBP ) {
+            $ext = explode('.',$file);
 
-        if($ext[1] == "png" || $ext[1] == "jpg" || $ext[1] == "jpeg") {
-            if(file_exists(__DIR__ . '/dist/'.$ext[0].'.webp')) {
-                $file = $ext[0].'.webp';
+            if($ext[1] == "png" || $ext[1] == "jpg" || $ext[1] == "jpeg") {
+                if(file_exists(__DIR__ . '/dist/'.$ext[0].'.webp')) {
+                    $file = $ext[0].'.webp';
+                }
             }
         }
 
