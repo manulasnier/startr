@@ -4,17 +4,7 @@ const webpack = require('webpack');
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const StylelintPlugin = require('stylelint-webpack-plugin');
-const CopyPlugin = require('copy-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const ImageMinimizerPlugin = require('image-minimizer-webpack-plugin');
-const { WebpackManifestPlugin } = require('webpack-manifest-plugin');
-
-const options = {
-    map: f => {
-        f.name = f.name.replace('-webp','.webp');
-        return f;
-    }
-};
 
 // ENV
 const devMode = process.env.NODE_ENV !== 'production';
@@ -29,17 +19,16 @@ let config = {
     devtool: devMode ? "source-map" : false,
 
     entry: {
-        app: [
-            './js/app.js',
-            './less/app.less'
+        startr: [
+            './less/startr.less'
         ]
     },
 
     output: {
         path: path.resolve(__dirname, '../dist'),
         publicPath: '',
-        filename: devMode ? '[name].js' : '[name]-[contenthash].js',
-        assetModuleFilename: devMode ? '[name][ext][query]' : '[name]-[contenthash][ext][query]'
+        filename: '[name].js',
+        assetModuleFilename: '[name][ext][query]'
     },
 
     module: {
@@ -66,53 +55,7 @@ let config = {
                         }
                     },
                 ]
-            },
-
-            // FONTS - IMAGES
-            {
-                test: /\.(jpe?g|png|gif|svg|woff(2)?)$/i,
-                type: "asset/resource"
             }
-        ]
-    },
-
-    optimization: {
-        minimizer: [
-
-            !devMode ? new ImageMinimizerPlugin({
-                minimizer: {
-                    implementation: ImageMinimizerPlugin.imageminMinify,
-                    options: {
-                        plugins: [
-                            ['gifsicle', { interlaced: true }],
-                            ['jpegtran'],
-                            ['optipng', { optimizationLevel: 5 }],
-                            ['svgo'],
-                        ],
-                    },
-                },
-
-                generator: [
-                    {
-                        type: "asset",
-                        implementation: ImageMinimizerPlugin.imageminGenerate,
-                        options: {
-                            plugins: [["imagemin-webp", {quality: 100}]],
-                        }
-                    },
-
-                    {
-                        preset: "webp",
-                        implementation: ImageMinimizerPlugin.imageminGenerate,
-                        options: {
-                            plugins: [["imagemin-webp", {quality: 100}]],
-                        }
-                    }
-                ],
-
-                deleteOriginalAssets: false,
-
-            })  : '...',
         ]
     },
 
@@ -120,35 +63,17 @@ let config = {
         new CleanWebpackPlugin(),
 
         new MiniCssExtractPlugin({
-            filename: devMode ? '[name].css' : '[name]-[contenthash].css',
+            filename: '[name].css',
         }),
 
         new StylelintPlugin({
             configFile: '.stylelintrc.js',
             context: 'less',
             files: '*.less',
-            failOnError: false,
+            failOnError: true,
             quiet: false,
             emitErrors: true
         }),
-
-        new CopyPlugin({
-            patterns: [
-                {
-                    from: './img/*',
-                    to: devMode ? '[name][ext]' : '[name]-[contenthash][ext]'
-                }/*,
-                {
-                    from: './lib/*',
-                    to: '[name][ext]'
-                }*/
-            ],
-            options: {
-                concurrency: 100
-            },
-        }),
-
-        new WebpackManifestPlugin(options)
     ].filter(Boolean)
 };
 
