@@ -1,0 +1,46 @@
+{
+    "name": "startr",
+    "version": "1.0.1",
+    "description": "Starter Kit for integrator",
+    "license": "GNU GPL v3",
+    "authors": [
+        {
+            "name": "Manu Lasnier",
+            "email": "manu@manulasnier.com",
+            "role": "Integrator"
+        }
+    ],
+    "devDependencies": {
+        "autoprefixer": "latest",
+        "clean-webpack-plugin": "latest",
+        "copy-webpack-plugin": "latest",
+        "css-loader": "latest",
+        "cssnano": "latest",
+        "image-minimizer-webpack-plugin": "latest",
+        "imagemin": "latest",
+        "imagemin-gifsicle": "latest",
+        "imagemin-jpegtran": "latest",
+        "imagemin-optipng": "latest",
+        "imagemin-svgo": "latest",
+        "imagemin-webp": "latest",
+        "install": "latest",
+        "less": "latest",
+        "less-loader": "latest",
+        "mini-css-extract-plugin": "latest",
+        "path": "latest",
+        "postcss": "latest",
+        "postcss-less": "latest",
+        "postcss-loader": "latest",
+        "stylelint": "latest",
+        "stylelint-config-standard-less": "latest",
+        "stylelint-webpack-plugin": "latest",
+        "webpack": "latest",
+        "webpack-cli": "latest",
+        "webpack-manifest-plugin": "latest"
+    },
+    "scripts": {
+        "dev": "NODE_ENV=development webpack --progress --color",
+        "watch": "NODE_ENV=development webpack --progress --color --watch",
+        "build": "NODE_ENV=production webpack --progress --color"
+    }
+}
