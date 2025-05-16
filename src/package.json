@@ -1,7 +1,7 @@
 {
     "name": "startr",
-    "version": "1.0.1",
-    "description": "Starter Kit for integrator",
+    "version": "1.1.0",
+    "description": "LESS tools for integrator",
     "license": "GNU GPL v3",
     "authors": [
         {
@@ -13,16 +13,8 @@
     "devDependencies": {
         "autoprefixer": "latest",
         "clean-webpack-plugin": "latest",
-        "copy-webpack-plugin": "latest",
         "css-loader": "latest",
         "cssnano": "latest",
-        "image-minimizer-webpack-plugin": "latest",
-        "imagemin": "latest",
-        "imagemin-gifsicle": "latest",
-        "imagemin-jpegtran": "latest",
-        "imagemin-optipng": "latest",
-        "imagemin-svgo": "latest",
-        "imagemin-webp": "latest",
         "install": "latest",
         "less": "latest",
         "less-loader": "latest",
