@@ -1,142 +1,186 @@
-// MIXINS
+///// FLEX POWER ////
 
-// FLEX
-.flex (@fd: row, @align: center, @js: space-between) {
+.flex(@fd: row, @align: center, @js: space-between) {
     display: flex;
     flex-direction: @fd;
     align-items: @align;
     justify-content: @js;
 }
 
-.flex-i (@fd: row, @align: center, @js: space-between) {
+.flex-i(@fd: row, @align: center, @js: space-between) {
     display: inline-flex;
     flex-direction: @fd;
     align-items: @align;
     justify-content: @js;
 }
 
-// GRID SYSTEM
-.grid (@row: 1fr, @col: 1fr 1fr 1fr, @gap:20px ) {
-    display: grid;
-    grid-template-rows: @row;
-    grid-template-columns: @col;
-    grid-gap: @gap;
+// FLEX SHORT
+.flex-center(@direction: row) {
+    display: flex;
+    flex-direction: @direction;
+    align-items: center;
+    justify-content: center;
 }
 
-.grid-ar (@row: 1fr, @col: 1fr 1fr 1fr, @gap:20px) {
+.flex-stretch(@direction: row) {
+    display: flex;
+    flex-direction: @direction;
+    align-items: stretch;
+    justify-content: space-between;
+}
+
+// GRID SYSTEM
+.grid(@row: auto, @col: repeat(3, 1fr), @gap:20px) {
     display: grid;
     grid-auto-rows: @row;
     grid-template-columns: @col;
     grid-gap: @gap;
 }
 
-.grow (@start: 1, @end: -1) {
-    grid-row-start: @start;
-    grid-row-end: @end;
+.grow(@start: 1, @end: -1) {
+    grid-row: @start @end;
 }
 
-.gcol (@start: 1, @end: -1) {
-    grid-column-start: @start;
-    grid-column-end: @end;
+.gcol(@start: 1, @end: -1) {
+    grid-column: @start @end;
 }
 
-.garea (@rstart: 1, @rend: -1, @cstart: 1, @cend: -1) {
-    grid-row-start: @rstart;
-    grid-row-end: @rend;
-    grid-column-start: @cstart;
-    grid-column-end: @cend;
+.garea(@rstart: 1, @rend: -1, @cstart: 1, @cend: -1) {
+    grid-row: @rstart @rend;
+    grid-column: @cstart @cend;
 }
 
 // BTN COLOR
-.btn-color (@colorbg: #ddd, @colortxt: #fff) {
+.btn-color(@colorbg: #ddd, @colortxt: #fff) {
     border-color: @colorbg;
     background-color: @colorbg;
     color: @colortxt;
 
-    &:hover {
+    &:not(.nohov):hover {
+        @media (hover: hover) and (pointer: fine) {
+            background-color: transparent;
+            color: @colorbg;
+        }
+    }
+
+    &.actif {
         background-color: transparent;
         color: @colorbg;
     }
+
+    &.hover-variant {
+        &:not(.nohov):hover {
+            @media (hover: hover) and (pointer: fine) {
+                background-color: @colortxt;
+                border-color: @colortxt;
+                color: @colorbg;
+            }
+        }
+
+        &.actif {
+            background-color: @colortxt;
+            border-color: @colortxt;
+            color: @colorbg;
+        }
+    }
 }
 
-.btn-color-invert (@colorbg: #ddd, @colortxt: #fff) {
+.btn-color-invert(@colorbg: #ddd, @colortxt: #fff) {
     color: @colorbg;
     border-color: @colorbg;
     background-color: transparent;
 
-    &:hover {
+    &:not(.nohov):hover {
+        @media (hover: hover) and (pointer: fine) {
+            color: @colortxt;
+            background-color: @colorbg;
+        }
+    }
+
+    &.actif {
         color: @colortxt;
         background-color: @colorbg;
     }
 }
 
+.btn-gradient(@cstart: #eee, @center: #333, @cend: #000, @ctxt: #fff) {
+    color: @ctxt;
+    background: linear-gradient(90deg, @cstart, @center 50%, @cend) ~"var(--x, 0) / 150%";
+
+    &:hover {
+        --x: 100%;
+    }
+}
+
+/////////////// CLASSES CSS3 PRÉCONSTRUITES ////////////
+
 /// Coins arrondis
-.rounded (@radius: 5px) {
+.rounded(@radius: 5px) {
     border-radius: @radius;
 }
 
 /// Box shadow inset
-.box-shadow-inset (@x: 0px, @y: 3px, @blur: 5px, @spread: 5px, @color: fadeout(#000,50%)) {
-    box-shadow: inset @x @y @blur @spread @color;
+.box-shadow-inset(@x: 10px, @y: 10px, @blur: 40px, @spread: 0, @color: 0.75) {
+    box-shadow: @x @y @blur @spread rgba(0, 0, 0, @color) inset;
 }
 
 /// Box shadow
-.box-shadow (@x: 0px, @y: 3px, @blur: 5px, @hex: 0.5) {
-    box-shadow: @x @y @blur rgba(0, 0, 0, @hex);
+.box-shadow(@x: 0px, @y: 3px, @blur: 5px, @opacity: 0.5) {
+    box-shadow: @x @y @blur rgba(0, 0, 0, @opacity);
 }
 
 /// Text shadow
-.txt-shadow (@x: 1px, @y: 1px, @blur: 1px, @hex: #fff) {
-    text-shadow: @x @y @blur @hex;
+.txt-shadow(@x: 1px, @y: 1px, @blur: 1px, @opacity: 0.1) {
+    text-shadow: @x @y @blur rgba(0, 0, 0, @opacity);
 }
 
 /// Transition
-.transition (@prop: all, @time: 250ms, @ease: ease) {
+.transition(@prop: all, @time: 250ms, @ease: ease) {
     transition: @prop @time @ease;
 }
 
 /// Transform rotate
-.rotate (@rotate: 180deg) {
+.rotate(@rotate: 180deg) {
     transform: rotate(@rotate);
 }
 
 /// Transform translate
-.translate (@y: 20px, @x: 10px) {
+.translate(@y: 20px, @x: 10px) {
     transform: translateY(@y) translateX(@x);
 }
 
 /// Transform translateX
-.translateX (@x: 10px) {
+.translateX(@x: 10px) {
     transform: translateX(@x);
 }
 
 /// Transform translateY
-.translateY (@y: 20px) {
+.translateY(@y: 20px) {
     transform: translateY(@y);
 }
 
 /// Transform scale
-.scale (@val: 1.4) {
+.scale(@val: 1.4) {
     transform: scale(@val);
 }
 
 /// Transform origin
-.origin (@x: 0, @y: 0) {
+.origin(@x: 0, @y: 0) {
     transform-origin: @x @y;
 }
 
 /// Transform
-.transform (@rotate: 90deg, @scale: 1, @skew: 1deg, @translate: 10px) {
+.transform(@rotate: 90deg, @scale: 1, @skew: 1deg, @translate: 10px) {
     transform: rotate(@rotate) scale(@scale) skew(@skew) translate(@translate);
 }
 
 /// Gradient
-.gradient (@origin: bottom, @color1: #fff, @color2: #000) {
+.gradient(@origin: bottom, @color1: #fff, @color2: #000) {
     background-image: linear-gradient(to @origin, @color1, @color2);
 }
 
 /// Column
-.column (@count: 3, @width: 290px, @gap: 42px) {
+.column(@count: 3, @width: 290px, @gap: 42px) {
     columns: @width @count;
     column-gap: @gap;
 
@@ -146,16 +190,98 @@
 }
 
 // FORMS
-.placeholder(@opacity : 0.3) {
+.placeholder(@color: @fontcolor, @opacity : 0.45) {
+    /* stylelint-disable-next-line selector-no-vendor-prefix */
     &::-webkit-input-placeholder {
+        color: @color;
         opacity: @opacity;
     }
 
+    /* stylelint-disable-next-line selector-no-vendor-prefix */
     &::-moz-placeholder {
+        color: @color;
         opacity: @opacity;
     }
 
+    /* stylelint-disable-next-line selector-no-vendor-prefix */
     &:-ms-input-placeholder {
+        color: @color;
         opacity: @opacity;
     }
+}
+
+// NO SCROLLBAR
+.no-scrollbar(@x: auto, @y: hidden) {
+    overflow: @x @y;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+}
+
+// TRIANGLE GENERATOR
+.triangle-base() {
+    content: '';
+    display: block;
+    width: 0;
+    height: 0;
+    border-style: solid;
+}
+
+.triangle(@dir, @w, @h, @color) when (@dir = top) {
+    .triangle-base();
+
+    border-width: 0 @h @w;
+    border-color: transparent transparent @color;
+}
+
+.triangle(@dir, @w, @h, @color) when (@dir = bottom) {
+    .triangle-base();
+
+    border-width: @h @w 0 @h;
+    border-color: @color transparent transparent transparent;
+}
+
+.triangle(@dir, @w, @h, @color) when (@dir = left) {
+    .triangle-base();
+
+    border-width: @h @w @h 0;
+    border-color: transparent @color transparent transparent;
+}
+
+.triangle(@dir, @w, @h, @color) when (@dir = right) {
+    .triangle-base();
+
+    border-width: @h 0 @h @w;
+    border-color: transparent transparent transparent @color;
+}
+
+.triangle(@dir, @w, @h, @color) when (@dir = topright) {
+    .triangle-base();
+
+    border-width: 0 @w @h 0;
+    border-color: transparent @color transparent transparent;
+}
+
+.triangle(@dir, @w, @h, @color) when (@dir = bottomright) {
+    .triangle-base();
+
+    border-width: 0 0 @w @h;
+    border-color: transparent transparent @color;
+}
+
+.triangle(@dir, @w, @h, @color) when (@dir = bottomleft) {
+    .triangle-base();
+
+    border-width: @w 0 0 @h;
+    border-color: transparent transparent transparent @color;
+}
+
+.triangle(@dir, @w, @h, @color) when (@dir = topleft) {
+    .triangle-base();
+
+    border-width: @w @h 0 0;
+    border-color: @color transparent transparent transparent;
 }
