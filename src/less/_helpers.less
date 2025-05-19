@@ -1,5 +1,9 @@
 // HELPERS
 
+.tal {
+    text-align: left !important;
+}
+
 .tac {
     text-align: center !important;
 }
@@ -8,6 +12,13 @@
     text-align: right !important;
 }
 
-.spacing {
-    //
+.spacing(@val : 100px) {
+    padding-top: @val;
+    padding-bottom: @val;
 }
+
+each(range(100), {
+    .mb@{value} {
+        margin-bottom: @value;
+    }
+});

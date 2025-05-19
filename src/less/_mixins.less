@@ -121,17 +121,17 @@
 
 /// Box shadow inset
 .box-shadow-inset(@x: 10px, @y: 10px, @blur: 40px, @spread: 0, @color: 0.75) {
-    box-shadow: @x @y @blur @spread rgba(0, 0, 0, @color) inset;
+    box-shadow: @x @y @blur @spread rgba(0 0 0 @color) inset;
 }
 
 /// Box shadow
 .box-shadow(@x: 0px, @y: 3px, @blur: 5px, @opacity: 0.5) {
-    box-shadow: @x @y @blur rgba(0, 0, 0, @opacity);
+    box-shadow: @x @y @blur rgba(0 0 0 @opacity);
 }
 
 /// Text shadow
 .txt-shadow(@x: 1px, @y: 1px, @blur: 1px, @opacity: 0.1) {
-    text-shadow: @x @y @blur rgba(0, 0, 0, @opacity);
+    text-shadow: @x @y @blur rgba(0 0 0 @opacity);
 }
 
 /// Transition
