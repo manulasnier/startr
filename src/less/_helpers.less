@@ -22,3 +22,31 @@ each(range(100), {
         margin-bottom: @value;
     }
 });
+
+.hide {
+    display: none !important;
+
+    &-desktop {
+        @media @desktop {
+            display: none !important;
+        }
+    }
+
+    &-laptop {
+        @media @laptop {
+            display: none !important;
+        }
+    }
+
+    &-mobile {
+        @media @mobile {
+            display: none !important;
+        }
+    }
+
+    &-xmobile {
+        @media @xmobile {
+            display: none !important;
+        }
+    }
+}
