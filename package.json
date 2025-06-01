@@ -6,15 +6,10 @@
         "type": "git",
         "url": "https://github.com/manulasnier/startrless.git"
     },
-    "keywords": [],
-    "authors": [
-        {
-            "name": "Manu Lasnier",
-            "email": "manu@manulasnier.com",
-            "role": "Integrator"
-        }
-    ],
-    "license": "GNU GPL v3",
+    "keywords": ["less-css","less tools","css"],
+    "main": "index.js",
+    "author": "Manu Lasnier <[manu@manulasnier.com](mailto:manu@manulasnier.com)>",
+    "license": "GPL-3.0-only",
     "bugs": {
         "url": "https://github.com/manulasnier/startrless/issues"
     },

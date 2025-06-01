@@ -19,8 +19,8 @@ let config = {
     devtool: devMode ? "source-map" : false,
 
     entry: {
-        startr: [
-            './less/startr.less'
+        startrless: [
+            './src/less/startr.less'
         ]
     },
 
