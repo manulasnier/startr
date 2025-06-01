@@ -11,4 +11,3 @@ Install from npm
 
 ## Documentation
 
-
