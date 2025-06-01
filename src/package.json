@@ -1,8 +1,12 @@
 {
-    "name": "startr",
-    "version": "1.1.0",
-    "description": "LESS tools for integrator",
-    "license": "GNU GPL v3",
+    "name": "startrless",
+    "description": "LESS starter tools for websites builders",
+    "version": "0.0.1",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/manulasnier/startrless.git"
+    },
+    "keywords": [],
     "authors": [
         {
             "name": "Manu Lasnier",
@@ -10,6 +14,11 @@
             "role": "Integrator"
         }
     ],
+    "license": "GNU GPL v3",
+    "bugs": {
+        "url": "https://github.com/manulasnier/startrless/issues"
+    },
+    "homepage": "https://startrless.manulasnier.com",
     "devDependencies": {
         "autoprefixer": "latest",
         "clean-webpack-plugin": "latest",

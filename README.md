@@ -7,7 +7,7 @@ useful classes and mixins to start a new webproject using less-css
 
 Install from npm
 
-    npm install startr --save-dev
+    npm install startrless --save-dev
 
 ## Documentation
 
