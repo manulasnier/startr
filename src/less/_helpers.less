@@ -12,9 +12,8 @@
     text-align: right !important;
 }
 
-.spacing(@val : 100px) {
-    padding-top: @val;
-    padding-bottom: @val;
+.spacing(@val-h : 100px, @val-w: 0) {
+    padding: @val-h @val-w;
 }
 
 each(range(100), {
