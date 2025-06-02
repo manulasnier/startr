@@ -20,7 +20,6 @@
         "clean-webpack-plugin": "latest",
         "css-loader": "latest",
         "cssnano": "latest",
-        "install": "latest",
         "less": "latest",
         "less-loader": "latest",
         "mini-css-extract-plugin": "latest",
