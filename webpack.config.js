@@ -20,12 +20,12 @@ let config = {
 
     entry: {
         startrless: [
-            './src/less/startr.less'
+            './src/startr.less'
         ]
     },
 
     output: {
-        path: path.resolve(__dirname, '../dist'),
+        path: path.resolve(__dirname, 'dist'),
         publicPath: '',
         filename: '[name].js',
         assetModuleFilename: '[name][ext][query]'

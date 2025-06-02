@@ -16,9 +16,9 @@
     padding: @val-h @val-w;
 }
 
-each(range(100), {
+each(range(10, 100, 10), {
     .mb@{value} {
-        margin-bottom: @value;
+        margin-bottom: (@value * 1px) !important;
     }
 });
 
