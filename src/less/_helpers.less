@@ -25,27 +25,11 @@ each(range(10, 100, 10), {
 .hide {
     display: none !important;
 
-    &-desktop {
-        @media @desktop {
-            display: none !important;
+    each(@breakpoints), {
+        &-@{key} {
+            @media @value {
+                display: none !important;
+            }
         }
-    }
-
-    &-laptop {
-        @media @laptop {
-            display: none !important;
-        }
-    }
-
-    &-mobile {
-        @media @mobile {
-            display: none !important;
-        }
-    }
-
-    &-xmobile {
-        @media @xmobile {
-            display: none !important;
-        }
-    }
+    });
 }

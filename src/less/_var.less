@@ -7,7 +7,6 @@
 @alert: #c31616; // rouge alerte
 
 // SOCIAL COLORS
-/* stylelint-disable */
 @socials: {
     facebook: #1877f2;
     x: #000;
@@ -20,13 +19,13 @@
     vimeo: #1ab7ea;
     whatsapp: #25d366;
 };
-/* stylelint-enable */
 
-// RESPONSIVE //
-@desktop-xxl: ~'screen and (max-width: 1770px)';
-@desktop-wide: ~"screen and (max-width: 1449px)";
-@desktop: ~"screen and (max-width: 1199px)";
-@laptop: ~"screen and (max-width: 1023px)";
-@tablet: ~"screen and (max-width: 767px)";
-@mobile: ~"screen and (max-width: 639px)";
-@xmobile: ~"screen and (max-width: 479px)";
+@breakpoints: {
+    'desktop-xxl': ~'screen and (max-width: 1770px)';
+    'desktop-wide': ~"screen and (max-width: 1449px)";
+    'desktop': ~"screen and (max-width: 1199px)";
+    'laptop': ~"screen and (max-width: 1023px)";
+    'tablet': ~"screen and (max-width: 767px)";
+    'mobile': ~"screen and (max-width: 639px)";
+    'xmobile': ~"screen and (max-width: 479px)";
+};
