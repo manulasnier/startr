@@ -62,7 +62,7 @@ let config = {
         new CleanWebpackPlugin(),
 
         new MiniCssExtractPlugin({
-            filename: '[name].css',
+            filename: devMode ? '[name].css' : '[name]-min.css',
         }),
 
         new StylelintPlugin({
