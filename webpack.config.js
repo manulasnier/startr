@@ -4,6 +4,7 @@ const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const StylelintPlugin = require('stylelint-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const RemoveEmptyScriptsPlugin = require('webpack-remove-empty-scripts');
 
 // ENV
 const devMode = process.env.NODE_ENV !== 'production';
@@ -60,11 +61,10 @@ let config = {
 
     plugins: [
         new CleanWebpackPlugin(),
-
+        new RemoveEmptyScriptsPlugin(),
         new MiniCssExtractPlugin({
             filename: devMode ? '[name].css' : '[name]-min.css',
         }),
-
         new StylelintPlugin({
             configFile: '.stylelintrc.js',
             context: 'less',

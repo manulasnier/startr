@@ -6,7 +6,11 @@
         "type": "git",
         "url": "git+https://github.com/manulasnier/startrless.git"
     },
-    "keywords": ["less-css","less tools","css"],
+    "keywords": [
+        "less-css",
+        "less tools",
+        "css"
+    ],
     "main": "index.js",
     "style": "src/startr.less",
     "author": "Manu Lasnier <[manu@manulasnier.com](mailto:manu@manulasnier.com)>",
@@ -32,7 +36,7 @@
         "stylelint-webpack-plugin": "latest",
         "webpack": "latest",
         "webpack-cli": "latest",
-        "webpack-manifest-plugin": "latest"
+        "webpack-remove-empty-scripts": "^1.1.1"
     },
     "scripts": {
         "dev": "NODE_ENV=development webpack --progress --color",
