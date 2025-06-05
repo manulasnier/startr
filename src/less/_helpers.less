@@ -26,8 +26,8 @@ each(range(10, 100, 10), {
     display: none !important;
 
     each(@breakpoints, {
-        &-@{key} {
-            @media @value {
+        &-@{value} {
+            @media @@value {
                 display: none !important;
             }
         }

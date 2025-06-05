@@ -13,19 +13,19 @@
     pinterest: #bd2126;
     instagram: #f24966;
     linkedin: #0077b5;
-    youtube: #ff0000;
+    youtube: #f00;
     tiktok: #000;
     tumblr: #34465d;
     vimeo: #1ab7ea;
     whatsapp: #25d366;
 };
 
-@breakpoints: {
-    'desktop-xxl': ~'screen and (max-width: 1770px)';
-    'desktop-wide': ~"screen and (max-width: 1449px)";
-    'desktop': ~"screen and (max-width: 1199px)";
-    'laptop': ~"screen and (max-width: 1023px)";
-    'tablet': ~"screen and (max-width: 767px)";
-    'mobile': ~"screen and (max-width: 639px)";
-    'xmobile': ~"screen and (max-width: 479px)";
-};
+@breakpoints: desktop-xxl,desktop-wide,desktop,laptop,tablet,mobile,xmobile;
+
+@desktop-xxl: ~'screen and (max-width: 1770px)';
+@desktop-wide: ~"screen and (max-width: 1449px)";
+@desktop: ~"screen and (max-width: 1199px)";
+@laptop: ~"screen and (max-width: 1023px)";
+@tablet: ~"screen and (max-width: 767px)";
+@mobile: ~"screen and (max-width: 639px)";
+@xmobile: ~"screen and (max-width: 479px)";
