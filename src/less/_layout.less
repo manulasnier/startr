@@ -2,8 +2,23 @@
 
 .gcols {
     display: grid;
+    grid-auto-rows: auto;
+    
+    &.center {
+        align-items: center;
+    }
 
     &.col2 {
         grid-template-columns: repeat(2, 1fr);
+
+        &.col1 {
+            each(@breakpoints, {
+                &-@{value} {
+                    @media @@value {
+                        grid-template-columns: 1fr;
+                    }
+                }
+            });
+        }
     }
 }
