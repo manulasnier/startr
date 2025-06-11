@@ -1,0 +1,198 @@
+// COMPONENTS
+
+// BTN
+.btn-base(@height: 50px, @padding: 20px, @rounded: 25px, @border: 2px, @fz: 1.6rem, @textransform: uppercase, @fz-picto: 2rem, @margin-picto: 15px) {
+    margin: auto;
+    font-size: @fz;
+    text-transform: textransform;
+    padding: 0 @padding;
+    min-height: @height;
+    height: @height;
+    text-align: center;
+    border: @border solid transparent;
+    .flex-i(row,center,center);
+    .rounded(@rounded);
+    .transition();
+
+    @media print {
+        display: none;
+    }
+
+    i {
+        font-size: @fz-picto;
+    }
+
+    &.picto-right {
+        i {
+            margin-left: @margin-picto;
+        }
+    }
+
+    &.picto-left {
+        i {
+            margin-right: @margin-picto;
+        }
+    }
+
+    &.only-picto {
+        max-width: @height;
+        padding: 0;
+        .rounded(50%);
+    }
+} // .btn
+
+// BTN COLOR
+.btn-color(@colorbg: #ddd, @colortxt: #fff, @color-variant: #eee) {
+    border-color: @colorbg;
+    background-color: @colorbg;
+    color: @colortxt;
+
+    &:not(.nohov):hover {
+        // hover filaire avec couleur du fond
+        @media (hover: hover) and (pointer: fine) {
+            background-color: transparent;
+            border-color: @colorbg;
+            color: @colorbg;
+        }
+    }
+
+    &.actif {
+        background-color: transparent;
+        color: @colorbg;
+    }
+
+    &.hover-variant {
+        // hover filaire avec couleur du texte
+        &:not(.nohov):hover {
+            @media (hover: hover) and (pointer: fine) {
+                color: @colortxt;
+                border-color: @colortxt;
+            }
+        }
+
+        &.actif {
+            color: @colortxt;
+            border-color: @colortxt;
+        }
+    }
+
+    &.hover-color {
+        // hover avec seconde couleur
+        &:not(.nohov):hover {
+            @media (hover: hover) and (pointer: fine) {
+                background-color: @color-variant;
+                border-color: @color-variant;
+                color: @colortxt;
+            }
+        }
+
+        &.actif {
+            background-color: @color-variant;
+            border-color: @color-variant;
+            color: @colortxt;
+        }
+    }
+}
+
+.btn-color-invert(@colorbg: #666, @colortxt: #fff) {
+    color: @colorbg;
+    border-color: @colorbg;
+    background-color: transparent;
+
+    &:not(.nohov):hover {
+        @media (hover: hover) and (pointer: fine) {
+            color: @colortxt;
+            background-color: @colorbg;
+        }
+    }
+
+    &.actif {
+        color: @colortxt;
+        background-color: @colorbg;
+    }
+}
+
+.btn-gradient(@cstart: #eee, @center: #333, @cend: #000, @ctxt: #fff) {
+    color: @ctxt;
+    background: linear-gradient(90deg, @cstart, @center 50%, @cend) ~"var(--x, 0) / 150%";
+
+    &:hover {
+        --x: 100%;
+    }
+}
+
+// TRIANGLE GENERATOR
+.triangle-base() {
+    content: '';
+    display: block;
+    width: 0;
+    height: 0;
+    border-style: solid;
+}
+
+.triangle(@dir, @w, @h, @color) when (@dir = top) {
+    .triangle-base();
+
+    border-width: 0 @h @w;
+    border-color: transparent transparent @color;
+}
+
+.triangle(@dir, @w, @h, @color) when (@dir = bottom) {
+    .triangle-base();
+
+    border-width: @h @w 0 @h;
+    border-color: @color transparent transparent transparent;
+}
+
+.triangle(@dir, @w, @h, @color) when (@dir = left) {
+    .triangle-base();
+
+    border-width: @h @w @h 0;
+    border-color: transparent @color transparent transparent;
+}
+
+.triangle(@dir, @w, @h, @color) when (@dir = right) {
+    .triangle-base();
+
+    border-width: @h 0 @h @w;
+    border-color: transparent transparent transparent @color;
+}
+
+.triangle(@dir, @w, @h, @color) when (@dir = topright) {
+    .triangle-base();
+
+    border-width: 0 @w @h 0;
+    border-color: transparent @color transparent transparent;
+}
+
+.triangle(@dir, @w, @h, @color) when (@dir = bottomright) {
+    .triangle-base();
+
+    border-width: 0 0 @w @h;
+    border-color: transparent transparent @color;
+}
+
+.triangle(@dir, @w, @h, @color) when (@dir = bottomleft) {
+    .triangle-base();
+
+    border-width: @w 0 0 @h;
+    border-color: transparent transparent transparent @color;
+}
+
+.triangle(@dir, @w, @h, @color) when (@dir = topleft) {
+    .triangle-base();
+
+    border-width: @w @h 0 0;
+    border-color: @color transparent transparent transparent;
+}
+
+// NO SCROLLBARS
+.no-scrollbar(@x: auto, @y: hidden) {
+    overflow: @x @y;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+}

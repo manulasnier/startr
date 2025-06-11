@@ -1,0 +1,21 @@
+// FORMS
+
+.placeholder(@color: @fontcolor, @opacity : 0.45) {
+    /* stylelint-disable-next-line selector-no-vendor-prefix */
+    &::-webkit-input-placeholder {
+        color: @color;
+        opacity: @opacity;
+    }
+
+    /* stylelint-disable-next-line selector-no-vendor-prefix */
+    &::-moz-placeholder {
+        color: @color;
+        opacity: @opacity;
+    }
+
+    /* stylelint-disable-next-line selector-no-vendor-prefix */
+    &:-ms-input-placeholder {
+        color: @color;
+        opacity: @opacity;
+    }
+}

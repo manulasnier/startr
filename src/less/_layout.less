@@ -1,5 +1,52 @@
-// LAYOUT
+// LAYOUT MIXINS
+.flex(@fd: row, @align: center, @js: space-between) {
+    display: flex;
+    flex-direction: @fd;
+    align-items: @align;
+    justify-content: @js;
+}
 
+.flex-i(@fd: row, @align: center, @js: space-between) {
+    display: inline-flex;
+    flex-direction: @fd;
+    align-items: @align;
+    justify-content: @js;
+}
+
+// FLEX SHORT
+.flex-center(@direction: row) {
+    display: flex;
+    flex-direction: @direction;
+    align-items: center;
+    justify-content: center;
+}
+
+.flex-stretch(@direction: row) {
+    display: flex;
+    flex-direction: @direction;
+    align-items: stretch;
+    justify-content: space-between;
+}
+
+// GRID SYSTEM
+.grid(@row: auto, @col: repeat(2, 1fr), @gap:20px) {
+    display: grid;
+    grid-auto-rows: @row;
+    grid-template-columns: @col;
+    grid-gap: @gap;
+}
+
+/// Column
+.column(@count: 3, @width: 290px, @gap: 42px) {
+    columns: @width @count;
+    column-gap: @gap;
+
+    & > * {
+        break-inside: avoid;
+    }
+}
+
+// LAYOUT
 .gcols {
     display: grid;
     grid-auto-rows: auto;
