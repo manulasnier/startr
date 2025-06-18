@@ -55,17 +55,41 @@
         align-items: center;
     }
 
+    &.col1 {
+        each(@breakpoints, {
+            &-@{value} {
+                @media @@value {
+                    grid-template-columns: 1fr;
+                }
+            }
+        });
+    }
+
     &.col2 {
         grid-template-columns: repeat(2, 1fr);
 
-        &.col1 {
-            each(@breakpoints, {
-                &-@{value} {
-                    @media @@value {
-                        grid-template-columns: 1fr;
-                    }
+        each(@breakpoints, {
+            &-@{value} {
+                @media @@value {
+                    grid-template-columns: repeat(2, 1fr);
                 }
-            });
-        }
+            }
+        });
     }
-}
+
+    &.col3 {
+        grid-template-columns: repeat(3, 1fr);
+
+        each(@breakpoints, {
+            &-@{value} {
+                @media @@value {
+                    grid-template-columns: repeat(3, 1fr);
+                }
+            }
+        });
+    }
+
+    &.col4 {
+        grid-template-columns: repeat(4, 1fr);
+    }
+} // .gcols

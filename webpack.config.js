@@ -20,12 +20,12 @@ let config = {
 
     entry: {
         startrless: [
-            './src/startr.less'
+            './startr.less'
         ]
     },
 
     output: {
-        path: path.resolve(__dirname, 'dist'),
+        path: path.resolve(__dirname, 'test/dist'),
         publicPath: '',
         filename: '[name].js',
         assetModuleFilename: '[name][ext][query]'
@@ -66,7 +66,7 @@ let config = {
             filename: devMode ? '[name].css' : '[name]-min.css',
         }),
         new StylelintPlugin({
-            configFile: '.stylelintrc.js',
+            configFile: '.stylelintrc',
             context: 'less',
             files: '*.less',
             failOnError: true,
