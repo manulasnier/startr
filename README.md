@@ -15,4 +15,4 @@ Use it by importing on the top on your LESS file
 
 ## Documentation
 
-Get examples and full documentation here : [startr.manulasnier.com](https://startr.manulasnier.com/)
+Get examples and full documentation here : [startrless.manulasnier.com](https://startrless.manulasnier.com/)
