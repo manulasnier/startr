@@ -9,5 +9,10 @@ Install from npm
 
     npm install startrless --save-dev
 
+Use it by importing on the top on your LESS file
+
+    @import "~startrless";
+
 ## Documentation
 
+Get examples and full documentation here : [startr.manulasnier.com](https://startr.manulasnier.com/)
