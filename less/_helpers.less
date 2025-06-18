@@ -1,22 +1,6 @@
 // HELPERS
 
-.tal {
-    text-align: left !important;
-}
-
-.tac {
-    text-align: center !important;
-}
-
-.tar {
-    text-align: right !important;
-}
-
-.spacing(@val-h : 100px, @val-w: 0) {
-    padding: @val-h @val-w;
-}
-
-each(range(10, 100, 10), {
+each(range(10, 100, 5), {
     .mb@{value} {
         margin-bottom: (@value * 1px) !important;
     }
@@ -33,3 +17,24 @@ each(range(10, 100, 10), {
         }
     });
 }
+
+.hidden {
+    visibility: hidden !important;
+}
+
+.spacing(@val-h : 100px, @val-w: 0) {
+    padding: @val-h @val-w;
+}
+
+.sr-only {
+	border: 0 !important;
+	clip: rect(1px, 1px, 1px, 1px) !important;
+	clip-path: inset(50%) !important;
+	height: 1px !important;
+	overflow: hidden !important;
+	padding: 0 !important;
+	position: absolute !important;
+	width: 1px !important;
+	white-space: nowrap !important;
+}
+
