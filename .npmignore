@@ -1,6 +1,6 @@
 /test/
 dist/
-.browserlist
+.browserlistrc
 .editorconfig
 .nvmrc
 .stylelintrc
