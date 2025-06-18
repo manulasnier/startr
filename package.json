@@ -1,7 +1,7 @@
 {
     "name": "startrless",
     "description": "LESS starter tools for websites builders",
-    "version": "0.0.3",
+    "version": "0.0.4",
     "repository": {
         "type": "git",
         "url": "git+https://github.com/manulasnier/startrless.git"
