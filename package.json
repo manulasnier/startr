@@ -11,8 +11,7 @@
         "less tools",
         "css"
     ],
-    "main": "index.js",
-    "style": "src/startr.less",
+    "main": "startr.less",
     "author": "Manu Lasnier <[manu@manulasnier.com](mailto:manu@manulasnier.com)>",
     "license": "GPL-3.0-only",
     "bugs": {
