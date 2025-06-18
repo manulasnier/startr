@@ -47,6 +47,15 @@
 }
 
 // LAYOUT
+
+.wrapper(@width: 1500px, @margin: 10px) {
+    margin: 0 auto;
+    width: 100%;
+    max-width: @width;
+    padding: 0 @margin;
+    position: relative;
+}
+
 .gcols {
     display: grid;
     grid-auto-rows: auto;
